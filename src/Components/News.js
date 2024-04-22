@@ -71,7 +71,7 @@ export class News extends Component {
   render() {
     return (
       <div className='container-xl my-12'>
-          <h1 className='text-3xl text-center mb-4 text-rose-950  font-semibold animate-bounce'>NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
+          <h1 className='text-3xl text-center mb-4 mt-20  text-rose-950  font-semibold animate-bounce'>NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
             {this.state.loading && <Spinner/>}
           <div className="row">
             {!this.state.loading && this.state.articles.map((element)=>{

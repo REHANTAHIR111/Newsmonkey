@@ -5,7 +5,7 @@ export class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-dark bg-dark text-white">
+        <nav className="fixed top-0 w-[100%] z-10 py-2 navbar navbar-dark bg-dark text-white">
             <div className=" container flex">
                 <div className='flex gap-4'>
                     <Link to='/'className='text-xl font-medium text-gray-400'>NewsMonkey</Link>
