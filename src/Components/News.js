@@ -25,6 +25,7 @@ export class News extends Component {
     this.state = {
       articles: [],
       loading: false,
+      showTopButton: true,
       page:1
     }
     document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`;
@@ -50,6 +51,19 @@ export class News extends Component {
       articles: parsedData.articles,
       loading: false
     })
+  };
+
+  onScrollHandler = () => {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        this.setState({showTopButton:true})
+    } else {
+      this.setState({showTopButton:false})
+    }
+  };
+
+  goToTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   };
 
   handlenextclick = async() =>{
@@ -80,6 +94,15 @@ export class News extends Component {
               </div>  
             })} 
           </div>
+          <div className="fixed bottom-10 right-10  z-10">
+              {this.state.showTopButton && (
+                  <button type="button" className="btn btn-outline-primary rounded-full p-2 animate-pulse bg-primary text-white" onClick={this.goToTop}>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7l4-4m0 0l4 4m-4-4v18" />
+                      </svg>
+                  </button>
+              )}
+          </div> 
           <div className="container flex justify-between">
             <button disabled={this.state.page<=1} className="btn btn-dark"onClick={this.handlepreclick}>&larr; Previous</button>
             <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize )} className="btn btn-dark"onClick={this.handlenextclick}>Next &rarr;</button>
