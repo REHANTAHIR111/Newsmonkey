@@ -87,13 +87,13 @@ export class News extends Component {
       <div className='container-xl my-12'>
           <h1 className='text-3xl text-center mb-4 mt-20  text-rose-950  font-semibold animate-bounce'>NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
             {this.state.loading && <Spinner/>}
-          <div className="row">
-            {!this.state.loading && this.state.articles.map((element)=>{
+          <div className="row" >
+            {this.state.articles.map((element)=>{
               return <div className="col-md-4" key={element.url}>
-                <NewsItem title={element.title?element.title:""} description={element.description?element.description:""} author={element.author} date={element.publishedAt} imageUrl={element.urlToImage} newsUrl={element.url}/>
-              </div>  
-            })} 
-          </div>
+                        <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description.slice(0, 88) : ""} author={element.author} date={element.publishedAt} imageUrl={element.urlToImage} newsUrl={element.url}/>
+                    </div> 
+            })}
+          </div> 
           <div className="fixed bottom-10 right-10  z-10">
               {this.state.showTopButton && (
                   <button type="button" className="btn btn-outline-primary rounded-full p-2 animate-pulse bg-primary text-white" onClick={this.goToTop}>
