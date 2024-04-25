@@ -6,7 +6,7 @@ export class NewsItem extends Component {
     let {title, description, imageUrl, newsUrl, author, date} = this.props
     return (
       <div>
-          <div className="card my-3">
+          <div className="card my-3 ">
             <img src={!imageUrl?"https://cdn.zeebiz.com/sites/default/files/styles/zeebiz_850x478/public/2019/02/15/74385-hacker-pixabay.jpg?itok=raw77Ci5&c=dc4689881a8e4678456af987aba25e8f":imageUrl}/>
             <div className="card-body">
               <h2 className='font-semibold text-lg card-title'>{title}</h2>

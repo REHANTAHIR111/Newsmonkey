@@ -28,7 +28,7 @@ export class News extends Component {
       showTopButton: true,
       page:1
     }
-    document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`;
+    document.title = `${this.capitalizeFirstLetter(this.props.category)} | NewsMonkey`;
   }
   async componentDidMount(){
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=1&pageSize=${this.props.pageSize}` ;
@@ -45,7 +45,6 @@ export class News extends Component {
     this.setState({loading:true})
     let data = await fetch(url);
     let parsedData = await data.json()
-    console.log(parsedData);
     this.setState({
       page: this.state.page - 1,
       articles: parsedData.articles,
@@ -54,7 +53,7 @@ export class News extends Component {
   };
 
   onScrollHandler = () => {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    if (document.body.scrollTop > 50 || document.Element.scrollTop > 50) {
         this.setState({showTopButton:true})
     } else {
       this.setState({showTopButton:false})
@@ -84,10 +83,10 @@ export class News extends Component {
 
   render() {
     return (
-      <div className='container-xl my-12'>
-          <h1 className='text-3xl text-center mb-4 mt-20  text-rose-950  font-semibold animate-bounce'>NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
+      <div className='container-xl my-12 '>
+          <h1 className='text-3xl text-center mb-3 mt-24 text-rose-950  font-semibold animate-bounce'>NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
             {this.state.loading && <Spinner/>}
-          <div className="row" >
+          <div className="row " >
             {this.state.articles.map((element)=>{
               return <div className="col-md-4" key={element.url}>
                         <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description.slice(0, 88) : ""} author={element.author} date={element.publishedAt} imageUrl={element.urlToImage} newsUrl={element.url}/>
@@ -104,8 +103,8 @@ export class News extends Component {
               )}
           </div> 
           <div className="container flex justify-between">
-            <button disabled={this.state.page<=1} className="btn btn-dark"onClick={this.handlepreclick}>&larr; Previous</button>
-            <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize )} className="btn btn-dark"onClick={this.handlenextclick}>Next &rarr;</button>
+            <button disabled={this.state.page<=1} className={`${this.state.page<=1 ? 'btn btn-dark' : 'btn btn-danger'}`} onClick={this.handlepreclick}>&larr; Previous</button>
+            <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize )} className={`${this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize) ? 'btn btn-dark' : 'btn btn-danger' }`} onClick={this.handlenextclick}>Next &rarr;</button>
           </div>    
       </div>
     )
