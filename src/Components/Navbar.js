@@ -10,12 +10,12 @@ export class Navbar extends Component {
         <source src={bgvid} type='video/mp4' />
       </video> */}
 
-        <nav className="fixed top-0 w-full shadow-xl shadow-stone-700 z-10 py-2.5  bg-dark text-white">
+        <nav className="fixed top-0 w-full shadow-xl shadow-stone-700 z-10 py-2.5 bg-dark text-white">
             <div className=" container flex">
                 <div className='flex gap-4'>
                     <img src="new.jpeg" alt="" />
-                    <Link to='/'className='text-xl font-medium text-gray-400 '>NewsMonkey</Link>
-                    <div className='space-x-4 relative top-1.5 text-sm font-semibold'>
+                    <Link to='/'className='text-xl md:text-2xl font-medium text-gray-400 '>NewsMonkey</Link>
+                    <div className='space-x-4 relative top-1.5 text-sm md:text-base font-semibold'>
                       <Link to='/'className='transition-all duration-250 hover:text-gray-400 hover:border hover:border-0 hover:border-b-2 hover:border-sky-600'>Home</Link>
                       <Link to='/business'className='transition-all duration-250 hover:text-gray- hover:border hover:border-0 hover:border-b-2 hover:border-sky-600'>Business</Link>
                       <Link to='/entertainment'className='transition-all duration-250 hover:text-gray-400 hover:border hover:border-0 hover:border-b-2 hover:border-sky-600'>Entertainment</Link>
