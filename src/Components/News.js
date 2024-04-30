@@ -1,114 +1,164 @@
-import React, { Component } from 'react'
-import NewsItem from './NewsItem'
+import React, { Component } from 'react';
+import NewsItem from './NewsItem';
 import Spinner from './Spinner';
-import PropTypes from 'prop-types'
+import InfiniteScroll from "react-infinite-scroll-component";
+import PropTypes from 'prop-types';
 
 export class News extends Component {
   static defaultProps = {
     country: 'in',
-    pageSize: 19,
-    category: 'General'
-  }
+    pageSize: 9,
+    category: 'General',
+  };
 
   static propTypes = {
     country: PropTypes.string,
     pageSize: PropTypes.number,
     category: PropTypes.string,
-  }
+  };
 
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       articles: [],
-      loading: false,
-      showTopButton: true,
-      page:1
-    }
+      loading: true,
+      showTopButton: [],
+      page: 1,
+      totalResults: 0,
+    };
     document.title = `${this.capitalizeFirstLetter(this.props.category)} | NewsMonkey`;
   }
-  async componentDidMount(){
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=1&pageSize=${this.props.pageSize}` ;
-    this.setState({loading:true})
+  async componentDidMount() {
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=1&pageSize=${this.props.pageSize}`;
+    this.setState({ loading: true });
     let data = await fetch(url);
-    let parsedData = await data.json()
+    let parsedData = await data.json();
     console.log(parsedData);
-      this.setState({articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false})
+    //  
+    this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false });
   }
 
-  handlepreclick = async() =>{
+  handlepreclick = async () => {
     console.log('previous');
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=${this.state.page - 1}&pageSize=${this.props.pageSize}` ;
-    this.setState({loading:true})
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=${this.state.page - 1}&pageSize=${
+      this.props.pageSize
+    }`;
+    this.setState({ loading: true });
     let data = await fetch(url);
-    let parsedData = await data.json()
+    let parsedData = await data.json();
     this.setState({
       page: this.state.page - 1,
       articles: parsedData.articles,
-      loading: false
-    })
+      loading: false,
+    });
   };
 
-  onScrollHandler = () => {
-    if (document.body.scrollTop > 50 || document.Element.scrollTop > 50) {
-        this.setState({showTopButton:true})
-    } else {
-      this.setState({showTopButton:false})
-    }
+  // onScrollHandler = () => {
+  //   console.log(document.body.scrollTop)
+  //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  //     this.setState({ showTopButton: true });
+  //   } else {
+  //     this.setState({ showTopButton: false });
+  //   }
+  // };
+
+  // goToTop = () => {
+  //   document.body.scrollTop = 0;
+  //   document.documentElement.scrollTop = 0;
+  // };
+  fetchMoreData = async () => {
+    
+    this.setState({page: this.state.page + 1})
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=${this.state.page - 1}&pageSize=${
+      this.props.pageSize
+    }`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    this.setState({
+      totalResults: parsedData.totalResults,
+      articles: this.state.articles.concat(parsedData.articles),
+    });
+
   };
 
-  goToTop = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };
-
-  handlenextclick = async() =>{
+  handlenextclick = async () => {
     console.log('next');
-    if(!(this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize))){
-      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=${this.state.page + 1}&pageSize=${this.props.pageSize}` ;
-      this.setState({loading:true})
+    if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=${this.state.page + 1}&pageSize=${
+        this.props.pageSize
+      }`;
+      this.setState({ loading: true });
       let data = await fetch(url);
-      let parsedData = await data.json()
+      let parsedData = await data.json();
       console.log(parsedData);
       this.setState({
         page: this.state.page + 1,
         articles: parsedData.articles,
-        loading: false
-      })
+        loading: false,
+      });
     }
   };
+  
 
   render() {
     return (
-      <div className='container-xl my-12 '>
-          <h1 className='text-3xl text-center mb-3 mt-24 text-rose-950  font-semibold animate-bounce'>NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
-            {this.state.loading && <Spinner/>}
-          <div className="row " >
-            {this.state.articles.map((element)=>{
-              return <div className="col-md-4" key={element.url}>
-                        <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description.slice(0, 88) : ""} author={element.author} date={element.publishedAt} imageUrl={element.urlToImage} newsUrl={element.url}/>
-                    </div> 
-            })}
-          </div> 
-          <div className="fixed bottom-10 right-10  z-10">
-              {this.state.showTopButton && (
-                  <button type="button" className="btn btn-outline-primary rounded-full p-2 animate-pulse bg-primary text-white" onClick={this.goToTop}>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7l4-4m0 0l4 4m-4-4v18" />
-                      </svg>
-                  </button>
-              )}
-          </div> 
-          <div className="container flex justify-between">
-            <button disabled={this.state.page<=1} className={`${this.state.page<=1 ? 'btn btn-dark' : 'btn btn-danger'}`} onClick={this.handlepreclick}>&larr; Previous</button>
-            <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize )} className={`${this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize) ? 'btn btn-dark' : 'btn btn-danger' }`} onClick={this.handlenextclick}>Next &rarr;</button>
-          </div>    
-      </div>
-    )
+     <>
+        <h1 className="text-3xl text-center mb-3 mt-24 text-rose-950  font-semibold animate-bounce">NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
+        {this.state.loading && <Spinner />}
+        <InfiniteScroll
+          dataLength={this.state.articles.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.articles.length !== this.state.totalResults}
+          loader={<Spinner/>}
+        >
+          <div className="container my-3">
+            <div className="row ">
+              {this.state.articles.map((element) => {
+                return (
+                  <div className="col-md-4" key={element.url}>
+                    <NewsItem
+                      title={element.title ? element.title : ''}
+                      description={element.description ? element.description.slice(0, 88) : ''}
+                      author={element.author}
+                      date={element.publishedAt}
+                      source={element.source.name}
+                      imageUrl={element.urlToImage}
+                      newsUrl={element.url}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>  
+        </InfiniteScroll>
+        {/* <div className="fixed bottom-10 right-10  z-10">
+          {this.state.showTopButton && (
+            <button type="button" className="btn btn-outline-primary rounded-full p-2 animate-pulse bg-primary text-white" onClick={this.goToTop}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7l4-4m0 0l4 4m-4-4v18" />
+              </svg>
+            </button>
+          )}
+        </div> */}
+        {/* <div className="container flex justify-between">
+          <button disabled={this.state.page <= 1} className={`${this.state.page <= 1 ? 'btn btn-dark' : 'btn btn-danger'}`} onClick={this.handlepreclick}>
+            &larr; Previous
+          </button>
+          <button
+            disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)}
+            className={`${this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize) ? 'btn btn-dark' : 'btn btn-danger'}`}
+            onClick={this.handlenextclick}
+          >
+            Next &rarr;
+          </button>
+        </div> */}
+      </>
+    );
   }
 }
 
-export default News
+export default News;

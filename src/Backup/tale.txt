@@ -1,0 +1,69 @@
+<h2 class="text-base mt-3 font-semibold">Maintenance and After-sales</h2>
+<p class="text-sm text-[#5D686F] mt-1 font-regular">
+    The company has expanded specialized centers to provide services, both stand-alone and mobility to meet the needs of customers after sales. Our coverage areas reach from the North to South, East to West.
+</p>
+<p class="text-sm text-[#5D686F] mt-1 font-regular">
+    Tamkeen Stores proudly provides maintenance after-sales service for all types of global brands. All of the warranty services and repairs provided by Tamkeen Stores are under authorization from the manufacturer. All your devices will be handled by professional and certified technicians and repaired using genuine spare parts and components. Moreover, the Product Warranty covers spare parts and labor costs during the warranty period. Below is a list of Maintenance centers across the kingdom. Maximum repair time of up to 15 days from the maintenance request date.
+</p>
+<table style="color: rgb(51, 62, 72)" class="table table-striped table-hover mt-3">
+   <thead>
+      <tr class="bgprimarycolor text-white">
+         <th>City</th>
+         <th>Location</th>
+         <th>Timing</th>
+         <th>Contact no</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="fontSize09">
+         <th>Khamis Mushait Service Center</th>
+         <td><a href="https://goo.gl/maps/JPDcydH5Lo5EJjoFA" target="_blank" class="text-underline">Location</a></td>
+         <td>9 am to 5 pm all days of the week except Friday</td>
+         <td><a href="tel:8002444464">8002444464</a></td>
+      </tr>
+      <tr class="fontSize09">
+         <th>Dammam Service Center</th>
+         <td><a href="https://goo.gl/maps/9PamycvGTLjVLbT96" target="_blank" class="text-underline">Location</a></td>
+         <td>9 am to 5 pm all days of the week except Friday</td>
+         <td><a href="tel:8002444464">8002444464</a></td>
+      </tr>
+      <tr class="fontSize09">
+         <th>Abu Arish Service Center</th>
+         <td><a href="https://goo.gl/maps/AX6t2VwtSqcDeCcUA" target="_blank" class="text-underline">Location</a></td>
+         <td>9 am to 5 pm all days of the week except Friday</td>
+         <td><a href="tel:8002444464">8002444464</a></td>
+      </tr>
+      <tr class="fontSize09">
+         <th>Riyadh Service Center</th>
+         <td><a href="https://goo.gl/maps/jEhogDxAL1cpLcG49" target="_blank" class="text-underline">Location</a></td>
+         <td>9 am to 5 pm all days of the week except Friday</td>
+         <td><a href="tel:8002444464">8002444464</a></td>
+      </tr>
+      <tr class="fontSize09">
+         <th>Jeddah Service Center</th>
+         <td><a href="https://goo.gl/maps/8XfvTqhAQPeraB9AA" target="_blank" class="text-underline">Location</a></td>
+         <td>9 am to 5 pm all days of the week except Friday</td>
+         <td><a href="tel:8002444464">8002444464</a></td>
+      </tr>
+   </tbody>
+</table>
+<div class="grid grid-cols-6">
+   <div class="w-full">
+      <img title="warranty card" alt="warranty card" src="https://cdn-media.tamkeenstores.com.sa/cdn-cgi/imagedelivery/Jw_qf5oljXy0QDE-Fq4W9Q/137116c0-452e-454b-35cf-e2c2e6802300/h=210" height="210" width="100%" class="rounded">
+   </div>
+   <div class="w-full">
+      <img title="reception" alt="reception" src="https://cdn-media.tamkeenstores.com.sa/cdn-cgi/imagedelivery/Jw_qf5oljXy0QDE-Fq4W9Q/c4e5cdee-3310-4cfb-5819-416f2ae5b200/h=210" height="210" width="100%" class="rounded">
+   </div>
+   <div class="w-full">
+      <img title="service of oven" alt="service of oven" src="https://cdn-media.tamkeenstores.com.sa/cdn-cgi/imagedelivery/Jw_qf5oljXy0QDE-Fq4W9Q/5584fda5-6fe6-4d07-0246-d6966b76ce00/h=210" height="210" width="100%" class="rounded">
+   </div>
+   <div class="w-full">
+      <img title="service of washing machine" alt="service of washing machine" src="https://cdn-media.tamkeenstores.com.sa/cdn-cgi/imagedelivery/Jw_qf5oljXy0QDE-Fq4W9Q/4514e603-ac3d-48f3-8af1-9dafe6318d00/h=210" height="210" width="100%" class="rounded">
+   </div>
+   <div class="w-full">
+      <img title="map" alt="map" src="https://cdn-media.tamkeenstores.com.sa/cdn-cgi/imagedelivery/Jw_qf5oljXy0QDE-Fq4W9Q/124127a6-cbcd-4b56-6369-43bf6d42e900/h=210" height="210" width="100%" class="rounded">
+   </div>
+   <div class="w-full">
+      <img title="ac repairing" alt="ac repairing" src="https://cdn-media.tamkeenstores.com.sa/cdn-cgi/imagedelivery/Jw_qf5oljXy0QDE-Fq4W9Q/b3a277ba-1593-4b2b-8e00-cb276943ef00/h=210" height="210" width="100%" class="rounded">
+   </div>
+</div>
