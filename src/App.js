@@ -7,6 +7,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Post from './Post.js';
 
 export default class App extends Component {
 
@@ -27,6 +28,7 @@ export default class App extends Component {
             <Route exact path="/sports" element={<News key="sports" pageSize={this.pageSize} country='in' category='sports' />}></Route>
             <Route exact path="/technology" element={<News key="technology" pageSize={this.pageSize} country='in' category='technology' />}></Route>
           </Routes>
+          <Post/>
         </div>
       </Router>
     )

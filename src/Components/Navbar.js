@@ -32,7 +32,7 @@ export class Navbar extends Component {
             </div>
           </div>
         </nav>
-      </div>
+        <div class="h-1 bg-rose-800 z-10 fixed transition-all duration-75 top-14 " style={{width: "100.709%"}}><div class="progress-bar h-2"></div></div></div>
     )
   }
 }
