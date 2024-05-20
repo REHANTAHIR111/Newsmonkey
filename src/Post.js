@@ -18,7 +18,7 @@ export default function Post() {
     }
   return (
     <div>
-      <form className='mb-20'>
+      {/* <form className='mb-20'>  s 
            <center>
                 <label>Name:</label><br/>
                 <input type='text' id='title' className='border border-2' required /><br/><br/>  
@@ -26,7 +26,7 @@ export default function Post() {
                 <input type='text' id='Ftitle' className='border border-2' required /><br/><br/>
                 <button type='submit' className='border border-2 bg-emerald-400 px-4 py-1.5 rounded-full' onClick={Submithandler}>Submit</button>
             </center>  
-      </form>
+      </form> */}
     </div>
   )
 }
