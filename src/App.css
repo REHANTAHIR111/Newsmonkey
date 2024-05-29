@@ -6,7 +6,7 @@ body{
 }
 .wave{
   position: fixed;
-  background: linear-gradient(90deg, #04595e 0%, #0b1e2b 100%);
+  background: linear-gradient(90deg, #0c606e 0%, #051827 100%);
 }
 
 .a {
@@ -21,9 +21,9 @@ body{
   height: 2px;
   bottom: 7px;
   left: 0;
-  background-color: #2889c2;
+  background-color: #dd6b00;
   transform: scaleX(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .a:hover:before {
