@@ -1,6 +1,5 @@
 import './App.css';
 import React, { Component } from 'react'
-import Navbar from './Components/Navbar.js'
 import News from './Components/News.js'
 import {
   BrowserRouter as Router,
@@ -17,9 +16,9 @@ export default class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar />
           <Routes>
-            <Route exact path="/" element={<News key="general" pageSize={this.pageSize} country='in' category='general' />}></Route>
+            <Route exact path="/" element={<Post key="post"/>}></Route>
+            <Route exact path="/homepage" element={<News key="general" pageSize={this.pageSize} country='in' category='general' />}></Route>
             <Route exact path="/business" element={<News key="business" pageSize={this.pageSize} country='in' category='business' />}></Route>
             <Route exact path="/entertainment" element={<News key="entertainment" pageSize={this.pageSize} country='in' category='entertainment' />}></Route>
             <Route exact path="/general" element={<News key="general" pageSize={this.pageSize} country='in' category='general' />}></Route>
@@ -28,7 +27,6 @@ export default class App extends Component {
             <Route exact path="/sports" element={<News key="sports" pageSize={this.pageSize} country='in' category='sports' />}></Route>
             <Route exact path="/technology" element={<News key="technology" pageSize={this.pageSize} country='in' category='technology' />}></Route>
           </Routes>
-          <Post/>
         </div>
       </Router>
     )

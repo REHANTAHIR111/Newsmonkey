@@ -3,6 +3,7 @@ import NewsItem from './NewsItem';
 import Spinner from './Spinner';
 import InfiniteScroll from "react-infinite-scroll-component";
 import PropTypes from 'prop-types';
+import Navbar from '../Components/Navbar';
 
 export class News extends Component {
   static defaultProps = {
@@ -104,6 +105,7 @@ export class News extends Component {
   render() {
     return (
       <>
+        <Navbar/>
         <center className="text-3xl text-center mb-3 mt-24 text-rose-950  font-semibold animate-bounce">NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</center>
         {this.state.loading && <Spinner />}
         <InfiniteScroll
