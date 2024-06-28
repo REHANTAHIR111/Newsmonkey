@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import NewsItem from './NewsItem';
 import Spinner from './Spinner';
 import InfiniteScroll from "react-infinite-scroll-component";
 import PropTypes from 'prop-types';
 import Navbar from '../Components/Navbar';
+import { ToastContainer, toast } from 'react-toastify';
+import { Link, Navigate } from 'react-router-dom';
 
 export class News extends Component {
   static defaultProps = {
@@ -27,13 +29,23 @@ export class News extends Component {
     this.state = {
       articles: [],
       loading: true,
+      password:(localStorage),
+      email:(localStorage),
       showTopButton: [],
       page: 1,
+      submitted : false,
       totalResults: 0,
     };
     document.title = `${this.capitalizeFirstLetter(this.props.category)} | NewsMonkey`;
   }
   async componentDidMount() {
+
+    if(localStorage.getItem('email') === 'rehan@rmail.com' && localStorage.getItem('password') === 'REHAN123'){
+    }
+    else{
+      this.setState({ submitted: true })
+    }
+
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4ef7e5d84f434bbd93d8b933bc642393&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
@@ -104,6 +116,14 @@ export class News extends Component {
   render() {
     return (
       <>
+        <ToastContainer
+          autoClose={1500}
+          hideProgressBar={true}
+          closeButton={false}
+        />
+        {this.state.submitted && 
+          <Navigate to={'/'}/>
+        }
         <Navbar/>
         <center className="text-3xl text-center mb-3 mt-24 text-rose-950  font-semibold animate-bounce">NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</center>
         {this.state.loading && <Spinner />}

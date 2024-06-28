@@ -1,28 +1,44 @@
-import React , { useState } from 'react';
+import React , { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import rehan from './img1.png'
+import rehan from './new.png'
+import BLUR from './blur.jpg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Post() {
 
   const navigate = useNavigate();
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
-  const [error, setError] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
 
-  const empty = (e) =>{
-    const valide = 'rehan@rmail.com';
-    const validp = 'REHAN123';
+  const valide = 'rehan@rmail.com'
+  const validp = 'REHAN123' 
+
+  localStorage.setItem('email',email)
+  localStorage.setItem('password',password)
+
+  useEffect(()=>{
+    const rehan = ()=>{
+      if(localStorage.getItem('email') && localStorage.getItem('password')){
+        navigate('/homepage')
+      }else{
+
+      }
+    }
+  })
+
+  const empty = (e) => {
     if(!email || !password){
-      alert('Please Fill ' + (!email ? 'Email, ' : '') + (!password ? 'Password' : '') + '!')
+      toast('Please Fill ' + (!email ? 'Email, ' : '') + (!password ? 'Password' : '') + '!')
       e.preventDefault();
     }
     else if(email !== valide){
-      alert("Email is Not Valid!");
+      toast.error("Email is Not Valid!");
       e.preventDefault();
     }
     else if(password !== validp){
-      alert("Password is Not Valid!");
+      toast.error("Password is Not Valid!");
       e.preventDefault();
     }
     else{
@@ -35,11 +51,15 @@ function Post() {
 };  
 
   return (
-      <div className='flex justify-center mt-28'>
-          <form className='border-4 w-[40rem] h-[34rem] rounded-md border-black border-animate-spin'>
-              <div className='flex justify-center overflow-hidden bg-cover bg-no-repeat'>
-                  <img src={rehan} className='rounded-full mt-10 transition-all duration-500 hover:scale-110 w-12 h-12 relative right-3'/>
-                  <h1 className='mt-10 text-center font-semibold text-4xl underline'>Login</h1>
+      <div className='flex justify-center mt-24'>
+        <ToastContainer
+          autoClose={1800}
+          closeButton={false}
+        />
+          <form className='w-[40rem] h-[34rem] gr'>
+              <div className='flex justify-center overflow-hidden bg-cover bg-no-repeat mt-10'>
+                  <img src={rehan} className='rounded-full transition-all duration-500 hover:scale-110 w-12 h-12 relative right-3'/>
+                  <h1 className='text-center font-bold bg-gradient-to-r from-teal-700 to-cyan-600 text-transparent bg-clip-text text-4xl'>Login</h1>
               </div>
               <div className='ml-40 mt-20'>
                   <label className='font-semibold text-lg'>Email</label><br/>
@@ -57,10 +77,11 @@ function Post() {
                         }
                     </span>
                   </div>
-                  <button type='submit' className='bg-cyan-400 btn w-80 hover:bg-teal-500 mt-6 py-1.5 px-9 rounded-full' onClick={(e) => {empty(e)}}>Submit</button>
+                  <button type='submit' className='bg-gradient-to-t from-[#a80c26] to-[#037381] text-gray-300 hover:bg-gradient-to-b text-lg h-10 border-0 w-80 mt-10 py-1.8 px-9 rounded-lg font-bold' onClick={(e) => {empty(e)}}>Login</button>
               </div>
           </form>
     </div>
   )
 }
 export default Post;
+

@@ -29,3 +29,16 @@ body{
 .a:hover:before {
   transform: scaleX(1);
 }
+.gr{
+  border-width: 15px;
+  border-image: linear-gradient(80deg, #a80c26, #037381) 1;
+  box-shadow: 20px 20px 25px;
+
+}
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+}
