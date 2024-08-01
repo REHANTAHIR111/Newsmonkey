@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { PopupMenu } from "react-simple-widgets";
 
 export class Navbar extends Component {
+  
+  email = localStorage.getItem('email')
 
   render() {
-
     return (
 
       <div>
@@ -61,12 +62,12 @@ export class Navbar extends Component {
                           </button>
                         </div>
                         <h5 className="text-center mb-0">Rehan</h5>
-                        <p className="text-center mb-2">{localStorage.getItem('email')}</p>
+                        <p className="text-center mb-2">{this.email}</p>
 
                         <hr style={{ margin: "0 -24px 24px" }} />
 
                         <div className="grid">
-                          <Link to={'/'} className="btn btn-secondary">
+                          <Link to={'/'} className="btn btn-danger">
                             <italic>Logout</italic>
                           </Link>
                         </div>
