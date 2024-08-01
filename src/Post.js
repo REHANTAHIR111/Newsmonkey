@@ -9,8 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 function Post() {
 
   const navigate = useNavigate();
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const valide = 'rehan@rmail.com'
@@ -19,20 +19,17 @@ function Post() {
   localStorage.setItem('email',email)
   localStorage.setItem('password',password)
 
-  useEffect(()=>{
-    
-  })
 
   const empty = (e) => {
     if(!email || !password){
-      toast('Please Fill ' + (!email ? 'Email, ' : '') + (!password ? 'Password' : '') + '!')
-      e.preventDefault();
+      toast.info('Please Fill ' + (!email ? 'Email ' : '') + 'And ' + (!password ? '  Password' : '') + '!')
+      e.preventDefault(); 
     }
-    else if(email !== valide){
+    else if(email !== valide && email){
       toast.error("Email is Not Valid!");
       e.preventDefault();
     }
-    else if(password !== validp){
+    else if(password !== validp && password){
       toast.error("Password is Not Valid!");
       e.preventDefault();
     }
