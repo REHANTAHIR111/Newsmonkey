@@ -125,7 +125,7 @@ export class News extends Component {
           <Navigate to={'/'}/>
         }
         <Navbar/>
-        <center className="text-3xl text-center mb-3 mt-24 text-rose-950  font-semibold animate-bounce">NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</center>
+        <center className="text-3xl text-center mb-3 mt-24 text-rose-950  font-semibold animate-bounce">Newsmonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</center>
         {this.state.loading && <Spinner />}
         <InfiniteScroll
           dataLength={this.state.articles.length}
