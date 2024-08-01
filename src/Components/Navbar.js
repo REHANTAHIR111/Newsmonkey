@@ -33,8 +33,8 @@ export class Navbar extends Component {
                 <div className="text-end">
                   <PopupMenu>
 
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className='py-1 px-1  rounded-full border-2 cursor-pointer'>
-                      <circle cx="12" cy="6" r="4" stroke="currentColor" strokeWidth="2" fill='black'/>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className='py-1 px-1  rounded-full border-stone-400 cursor-pointer bg-gradient-to-l from-gray-200 to-stone-400'>
+                      <circle cx="12" cy="6" r="4" stroke="currentColor" strokeWidth="2" fill='black' />
                       <path
                         opacity='1'
                         d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
@@ -44,28 +44,30 @@ export class Navbar extends Component {
                       />
                     </svg>
 
-                    <div className="card text-start bg-blue-500">
+                    <div className="card text-start bg-gradient-to-l from-gray-200 to-stone-400 mt-11">
                       <div className="card-body px-4 py-4">
                         <div id="circle-avatar" className="ml-12 mb-2">
-                          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="6" r="4" stroke="currentColor" strokeWidth="2" fill='black' />
-                            <path
-                              opacity='1'
-                              d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              fill='black'
-                            />
-                          </svg>
+                          <button className='px-1 py-1 border-2 border-black rounded-full bg-cyan-400'>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="12" cy="6" r="4" stroke="currentColor" strokeWidth="2" fill='black' />
+                              <path
+                                opacity='1'
+                                d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                fill='black'
+                              />
+                            </svg>
+                          </button>
                         </div>
                         <h5 className="text-center mb-0">Rehan</h5>
                         <p className="text-center mb-2">{localStorage.getItem('email')}</p>
 
                         <hr style={{ margin: "0 -24px 24px" }} />
 
-                        <div className="d-grid">
+                        <div className="grid">
                           <Link to={'/'} className="btn btn-secondary">
-                            <small>Logout</small>
+                            <italic>Logout</italic>
                           </Link>
                         </div>
                       </div>
