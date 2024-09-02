@@ -13,7 +13,7 @@ function Post() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const valide = 'rehan@rmail.com'
+  const valide = 'rehan@gmail.com'
   const validp = 'REHAN123' 
 
   localStorage.setItem('email',email)

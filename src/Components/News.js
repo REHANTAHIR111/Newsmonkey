@@ -40,7 +40,7 @@ export class News extends Component {
   }
   async componentDidMount() {
 
-    if(localStorage.getItem('email') === 'rehan@rmail.com' && localStorage.getItem('password') === 'REHAN123'){
+    if(localStorage.getItem('email') === 'rehan@gmail.com' && localStorage.getItem('password') === 'REHAN123'){
     }
     else{
       this.setState({ submitted: true })
